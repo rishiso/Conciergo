@@ -1,2 +1,2 @@
 # Conciergo
- Minimalist business finder built using React and Yelp API
+ Minimalist business finder built using React, Vercel, and Yelp API
