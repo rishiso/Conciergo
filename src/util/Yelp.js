@@ -3,7 +3,7 @@ const apiKey = 'Z-uMkbJmXmlbCtjAJDfprtXSifcaD5gFsC71KFTay6hGHDdlc7LdP9XW5WEoDXU3
 
 const Yelp = {
     search(term, location, sortBy) {
-      return fetch(`/api/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}:splat 200`, {
+      return fetch(`/api/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {
         headers: {
           Authorization: `Bearer ${apiKey}`
         }
