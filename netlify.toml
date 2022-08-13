@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/api/*"
-  to = ":splat"
+  to = "https://api.yelp.com/:splat"
   status = 200
   force = true
