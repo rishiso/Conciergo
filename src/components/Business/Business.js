@@ -1,5 +1,6 @@
 import React from 'react';
 import './Business.css';
+import convToMaps from '../../util/Maps';
 
 class Business extends React.Component {
     render() {
@@ -11,14 +12,16 @@ class Business extends React.Component {
                 <h2>{this.props.business.name}</h2>
                 <div className="Business-information">
                     <div className="Business-address">
-                    <p>{this.props.business.address}</p>
-                    <p>{this.props.business.city}</p>
-                    <p>{`${this.props.business.state} ${this.props.business.zipCode}`}</p>
+                        <p>{this.props.business.address}</p>
+                        <p>{this.props.business.city}</p>
+                        <p>{`${this.props.business.state} ${this.props.business.zipCode}`}</p>
+                        <a href={convToMaps(this.props.business.address, this.props.business.city, this.props.business.state, this.props.business.zipCode)} target="_blank" rel="noreferrer">Map</a>
                     </div>
                     <div className="Business-reviews">
-                    <h3>{this.props.business.category.toUpperCase()}</h3>
-                    <h3 className="rating">{this.props.business.rating}</h3>
-                    <p>{`${this.props.business.reviewCount} reviews`}</p>
+                        <h3>{this.props.business.category.toUpperCase()}</h3>
+                        <h3 className="rating">{this.props.business.rating}</h3>
+                        <p>{`${this.props.business.reviewCount} reviews`}</p>
+                        <a href={`tel:${this.props.business.phoneNumber}`}>{this.props.business.phoneNumber}</a>
                     </div>
                 </div>
             </div>
