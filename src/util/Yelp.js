@@ -1,14 +1,17 @@
 const apiKey = 'Z-uMkbJmXmlbCtjAJDfprtXSifcaD5gFsC71KFTay6hGHDdlc7LdP9XW5WEoDXU3fn3E_yl4oEmwspa3M0cdawICapx1u6eRXc3JGrSBIr2zhYnbLTqbvmv3bKDxYnYx';
-//Lmao plz don't steal my API key
 
 const Yelp = {
     search(term, location, sortBy) {
-      return fetch(`/api/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {
+      return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {
         headers: {
           Authorization: `Bearer ${apiKey}`
         }
       }).then(response => {
-        return response.json();
+        if (response.status !== 400) {
+          return response.json();
+        } else {
+          alert("Please input valid search criteria.")
+        }
       }).then(jsonResponse => {
         if (jsonResponse.businesses) {
           return jsonResponse.businesses.map(business => ({
