@@ -16,6 +16,10 @@ class App extends React.Component {
     Yelp.search(term, location, sortBy).then(businesses => {
       this.setState({businesses: businesses})
     });
+
+    if (typeof this.state.businesses === 'undefined') {
+      alert("Please Enter Valid Search Criteria")
+    }
   }
 
   render() {
