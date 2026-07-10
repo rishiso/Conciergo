@@ -1,4 +1,4 @@
-function convToMaps(address, city, state, zipCode) {
+function convToMaps(address: string | null, city: string, state: string, zipCode: string): string | undefined {
     if (address !== null) {
         let a = address.replaceAll(" ", "+");
         a += ",";
