@@ -1,13 +1,25 @@
 import React from 'react';
 import './SearchBar.css'
 
-class SearchBar extends React.Component {
-    constructor(props) {
+interface SearchBarProps {
+    searchYelp: (term: string, location: string, sortBy: string) => void;
+}
+
+interface SearchBarState {
+    term: string;
+    location: string;
+    sortBy: string;
+}
+
+class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
+    sortByOptions: Record<string, string>;
+
+    constructor(props: SearchBarProps) {
         super(props);
         this.state = {
             term: '',
             location: '',
-            sortBy: 'best_match' 
+            sortBy: 'best_match'
         };
 
         this.handleLocationChange = this.handleLocationChange.bind(this);
@@ -22,26 +34,26 @@ class SearchBar extends React.Component {
         };
     }
 
-    getSortByClass(sortByOption) {
+    getSortByClass(sortByOption: string): string {
         if (this.state.sortBy === sortByOption) {
             return 'active';
         }
         return '';
     }
 
-    handleSortByChange(sortByOption) {
+    handleSortByChange(sortByOption: string) {
         this.setState({sortBy: sortByOption});
     }
 
-    handleLocationChange(event) {
+    handleLocationChange(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({location: event.target.value});
     }
 
-    handleTermChange(event) {
+    handleTermChange(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({term: event.target.value});
     }
 
-    handleSearch(event) {
+    handleSearch(event: React.MouseEvent<HTMLButtonElement>) {
         this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
         event.preventDefault();
     }
@@ -50,9 +62,9 @@ class SearchBar extends React.Component {
         return Object.keys(this.sortByOptions).map(sortByOption => {
             let sortByOptionValue = this.sortByOptions[sortByOption];
             return (
-                <li 
-                key={sortByOptionValue} 
-                className={this.getSortByClass(sortByOptionValue)} 
+                <li
+                key={sortByOptionValue}
+                className={this.getSortByClass(sortByOptionValue)}
                 onClick={this.handleSortByChange.bind(this, sortByOptionValue)}>
                     {sortByOption}
                 </li>
