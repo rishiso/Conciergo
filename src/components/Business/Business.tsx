@@ -1,8 +1,13 @@
 import React from 'react';
 import './Business.css';
 import convToMaps from '../../util/Maps';
+import { Business as BusinessType } from '../../types';
 
-class Business extends React.Component {
+interface BusinessProps {
+    business: BusinessType;
+}
+
+class Business extends React.Component<BusinessProps> {
     render() {
         return (
             <div className="Business">
