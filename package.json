@@ -12,6 +12,13 @@
     "web-vitals": "^2.1.4",
     "whatwg-fetch": "^3.6.2"
   },
+  "devDependencies": {
+    "@types/jest": "^27",
+    "@types/node": "^16",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^4.9.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
