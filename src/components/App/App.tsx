@@ -3,18 +3,23 @@ import React from 'react';
 import BusinessList from '../BusinessList/BusinessList';
 import SearchBar from '../SearchBar/SearchBar';
 import Yelp from '../../util/Yelp';
+import { Business } from '../../types';
 
-class App extends React.Component {
-  constructor(props) {
+interface AppState {
+  businesses: Business[];
+}
+
+class App extends React.Component<{}, AppState> {
+  constructor(props: {}) {
     super(props);
 
     this.state = {businesses: []};
     this.searchYelp = this.searchYelp.bind(this);
   }
 
-  searchYelp(term, location, sortBy) {
-    Yelp.search(term, location, sortBy).then(businesses => {
-      this.setState({businesses: businesses})
+  searchYelp(term: string, location: string, sortBy: string): void {
+    Yelp.search(term, location, sortBy).then((businesses: Business[] | undefined) => {
+      this.setState({businesses: businesses ?? []})
     });
   }
 
