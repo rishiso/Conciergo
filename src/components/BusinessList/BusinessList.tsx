@@ -1,8 +1,13 @@
 import React from 'react';
 import './BusinessList.css';
 import Business from '../Business/Business';
+import { Business as BusinessType } from '../../types';
 
-class BusinessList extends React.Component {
+interface BusinessListProps {
+  businesses?: BusinessType[];
+}
+
+class BusinessList extends React.Component<BusinessListProps> {
     render() {
         return (
             <div className="BusinessList">
